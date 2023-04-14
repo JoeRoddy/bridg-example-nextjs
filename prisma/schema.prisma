@@ -6,8 +6,6 @@ generator client {
   previewFeatures = ["extendedWhereUnique"]
 }
 
-// joe_roddy 59N4OwtPbmYRWlyJ
-
 datasource db {
   provider = "sqlite"
   url      = "file:./dev.db"
@@ -15,8 +13,6 @@ datasource db {
 
 // datasource db {
 //   provider = "mongodb"
-//   // url      = "mongodb://joe_roddy:59N4OwtPbmYRWlyJ/"
-//   // url      = "mongodb+srv://admin:59N4OwtPbmYRWlyJ@cluster0.l5yg4xl.mongodb.net/test"
 //   url      = "mongodb://localhost:27017/bridg-mongo-test"
 // }
 
