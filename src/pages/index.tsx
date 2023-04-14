@@ -25,20 +25,7 @@ const BridgExample: NextPage = ({}) => {
   return data === undefined ? <GetStarted /> : <pre>{JSON.stringify(data, null, 1)}</pre>;
 };
 
-export const dbRules: DbRules = {
-  blog: {
-    get: true,
-    patch: (uid) => ({ userId: uid }),
-    post: (uid, data) => data?.title === 'This blog title is allowed',
-    delete: (uid) => ({ userId: uid }),
-  },
-  user: {
-    get: true,
-    patch: (uid) => ({ id: uid }),
-    post: true,
-    delete: false,
-  },
-};
+export const dbRules: DbRules = { default: true };
 
 export default BridgExample;
 
