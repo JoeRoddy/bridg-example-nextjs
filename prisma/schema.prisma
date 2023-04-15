@@ -11,14 +11,8 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-// datasource db {
-//   provider = "mongodb"
-//   url      = "mongodb://localhost:27017/bridg-mongo-test"
-// }
-
 model User {
   id String @id @default(cuid())
-  // id String @id @default(auto()) @map("_id") @db.ObjectId
 
   name  String?
   email String? @unique
@@ -31,7 +25,6 @@ model User {
 
 model Blog {
   id String @id @default(cuid())
-  // id String @id @default(auto()) @map("_id") @db.ObjectId
 
   title String
   body  String?
@@ -40,7 +33,6 @@ model Blog {
   viewCount Int     @default(0)
   user      User?   @relation(fields: [userId], references: [id])
   userId    String?
-  // userId    String? @db.ObjectId
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
