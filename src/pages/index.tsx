@@ -1,7 +1,8 @@
-import { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import { Blog } from '@prisma/client';
 import db from 'bridg/app/client/db';
 import { DbRules } from 'bridg/app/server/request-handler';
+import { NextPage } from 'next';
+import { useEffect, useState } from 'react';
 
 const BridgExample: NextPage = ({}) => {
   const [data, setData] = useState({});
@@ -22,7 +23,28 @@ const BridgExample: NextPage = ({}) => {
     })();
   }, []);
 
-  return data === undefined ? <GetStarted /> : <pre>{JSON.stringify(data, null, 1)}</pre>;
+  const [searchResults, setSearchResults] = useState<Blog[]>([]);
+
+  return data === undefined ? (
+    <GetStarted />
+  ) : (
+    <div>
+      <input
+        placeholder="Search for blogs.."
+        onChange={async (e) => {
+          const query = e.target.value;
+          if (!query) return setSearchResults([]);
+          const blogs = await db.blog.findMany({ where: { title: { contains: query } } });
+          setSearchResults(blogs);
+        }}
+      />
+      <br />
+      Blog Search Results:
+      <pre>{JSON.stringify(searchResults, null, 1)}</pre>
+      All Data:
+      <pre>{JSON.stringify(data, null, 1)}</pre>
+    </div>
+  );
 };
 
 export const dbRules: DbRules = { default: true };
