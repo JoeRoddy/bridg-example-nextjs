@@ -11,5 +11,5 @@ This repository is for demonstration purposes. NextJS is not required to use Bri
 
 ### Learning
 
-- Open `/pages/index.tsx` to start modifying your query, your prisma client should work exactly as it would on the server
-- Open `/prisma/db-rules.ts` to change your database rules
+- Open `/src/pages/index.tsx` to start modifying your query, your prisma client should work exactly as it would on the server
+- Open `src/pages/api/bridg.ts` to see how Bridg runs queries, and to change your database rules
