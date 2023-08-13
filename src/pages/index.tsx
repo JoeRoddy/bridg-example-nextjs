@@ -1,11 +1,11 @@
-import { NextPage } from 'next';
-import db from 'bridg';
 import { useAsync } from '@/hooks/useAsync';
+import bridg from 'bridg';
+import { NextPage } from 'next';
 
 const BridgExample: NextPage = ({}) => {
   // Query your DB from the frontend 😎
   const data = useAsync(() =>
-    db.user.findMany({
+    bridg.user.findMany({
       // uncomment to filter your results:
       // where: { email: { contains: 'alice@prisma' } },
       // uncomment include related data:
