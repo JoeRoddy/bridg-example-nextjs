@@ -4,6 +4,7 @@ import { NextPage } from 'next';
 
 const BridgExample: NextPage = ({}) => {
   // Query your DB from the frontend 😎
+  // see /prisma/rules.ts for how to secure your database
   const data = useAsync(() =>
     bridg.user.findMany({
       // uncomment to filter your results:
@@ -13,7 +14,11 @@ const BridgExample: NextPage = ({}) => {
     }),
   );
 
-  return data !== undefined ? <pre>{JSON.stringify(data, null, 1)}</pre> : <div>Fetch some data to get started</div>;
+  return data !== undefined ? (
+    <pre>{JSON.stringify(data, null, 1)}</pre>
+  ) : (
+    <div>Fetch some data to get started</div>
+  );
 };
 
 export default BridgExample;
