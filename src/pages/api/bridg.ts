@@ -8,6 +8,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>,
 ) {
+  console.log('cookies', req.cookies);
   // Mock authentication, replace with any auth system you want.
   const userId = 'cld4ar9fg000clfd96gujbblu';
   const { data, status } = await handleRequest(req.body, {
